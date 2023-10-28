@@ -13,7 +13,7 @@ RUN         apt update \
 RUN         npm install npm@9.8.1 typescript ts-node @types/node --location=global
 
 ##USER        container
-ENV         USER=container HOME=/home/container PATH=/usr/sbin:/usr/bin:/sbin:/bin
+ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 ## Prepare NSS Wrapper for the entrypoint as a workaround for Valheim requiring a valid UID
