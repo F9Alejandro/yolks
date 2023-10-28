@@ -16,6 +16,8 @@ RUN         npm install npm@9.8.1 typescript ts-node @types/node --location=glob
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
+RUN			chmod a+wrx /usr/lib/x86_64-linux-gnu/libnss_wrapper.so
+
 ## Prepare NSS Wrapper for the entrypoint as a workaround for Valheim requiring a valid UID
 ENV         NSS_WRAPPER_PASSWD=/tmp/passwd NSS_WRAPPER_GROUP=/tmp/group
 RUN         touch ${NSS_WRAPPER_PASSWD} ${NSS_WRAPPER_GROUP} \
