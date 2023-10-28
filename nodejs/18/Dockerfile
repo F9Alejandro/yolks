@@ -9,7 +9,7 @@ RUN         apt update \
 RUN         npm install npm@9.8.1 typescript ts-node @types/node --location=global
 
 USER        container
-ENV         USER=container HOME=/home/container
+ENV         USER=container HOME=/home/container PATH=/usr/sbin:/usr/bin:/sbin:/bin
 WORKDIR     /home/container
 
 COPY        ./../entrypoint.sh /entrypoint.sh
