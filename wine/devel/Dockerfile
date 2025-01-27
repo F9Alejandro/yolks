@@ -27,6 +27,8 @@ RUN             apt install --install-recommends winehq-devel cabextract wine-bi
 RUN	            wget -q -O /usr/sbin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
                 && chmod +x /usr/sbin/winetricks
 
+RUN 			Xorg -noreset +extension GLX +extension RANDR +extension RENDER -video xf86-video-dummy :0 &
+
 ENV             HOME=/home/container
 ENV             WINEPREFIX=/home/container/.wine
 ENV             WINEDLLOVERRIDES="mscoree,mshtml="
@@ -35,7 +37,6 @@ ENV             DISPLAY_WIDTH=1024
 ENV             DISPLAY_HEIGHT=768
 ENV             DISPLAY_DEPTH=16
 ENV             AUTO_UPDATE=1
-ENV             XVFB=1
 
 COPY            ./../entrypoint.sh /entrypoint.sh
 CMD             [ "/bin/bash", "/entrypoint.sh" ]
